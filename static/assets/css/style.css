@@ -291,7 +291,7 @@ section {
   padding-bottom: 30px;
 }
 
-.section-title h2 {
+.section-title  h2 {
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -300,7 +300,7 @@ section {
   color: #173b6c;
 }
 
-.section-title h2::after {
+.section-title   h2::after {
   content: '';
   position: absolute;
   display: block;
@@ -575,7 +575,7 @@ section {
   text-align: center;
   background: rgba(20, 157, 221, 0.75);
   transition: 0.3s;
-  width: 50%;
+  width: 100%;
 }
 
 .portfolio .portfolio-wrap .portfolio-links a:hover {
@@ -1072,4 +1072,40 @@ section {
     width: auto;
     padding-right: 20px 15px;
   }
+}
+
+.project_titles {
+  text-align: center;
+  padding: 0;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #173b6c;
+}
+
+/* .project-title {
+  font-family: "Poppins", sans-serif;
+  color: #149ddd;
+} */
+
+.section-project-title  h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #173b6c;
+}
+
+.section-project-title   h2::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #149ddd;
+  bottom: 0;
+  left: 0;
 }
