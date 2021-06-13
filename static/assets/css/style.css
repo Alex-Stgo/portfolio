@@ -1109,3 +1109,25 @@ section {
   bottom: 0;
   left: 0;
 }
+
+.cl-quote-icon-left, .cl-quote-icon-right {
+  color: #c3e8fa;
+  font-size: 26px;
+}
+
+.cl-quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.cl-quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+}
+
+.col-lg-5 {
+  width:40%
+}
