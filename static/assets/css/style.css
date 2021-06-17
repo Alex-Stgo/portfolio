@@ -1159,3 +1159,16 @@ section {
     width: 100%;
   }
 }
+
+#p-quote {
+  padding-top: 10px ;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.20rem;
+}
+
+.blue-em {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.20rem;
+  color:#149ddd ;
+  font-weight: 500;
+}
