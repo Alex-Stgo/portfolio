@@ -564,6 +564,7 @@ section {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  /* max-height: 265px; */
 }
 
 .portfolio .portfolio-wrap::before {
@@ -1171,4 +1172,9 @@ section {
   font-size: 1.20rem;
   color:#149ddd ;
   font-weight: 500;
+}
+
+.img-fluid {
+  max-width: 100%;
+  max-height: 250px;
 }
