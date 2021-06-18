@@ -24,11 +24,9 @@ def create_app():
 
     @app.route("/projects/swap_calculator/")
     def p_swap():
-        # print([e for e in app.db.entries.find({})])
-        # if request.method=="POST":
-        #     entry_content=request.form.get("content")
-        #     fdate=dt.datetime.today().strftime("%Y-%m-%d")
-        #     app.db.entries.insert({"content": entry_content, "date" : fdate})
-        # entries=[(entry["content"],entry["date"]) for entry in app.db.entries.find({})]
         return render_template("swap_calculator.html")
+
+    @app.route("/projects/forecasting_report/")
+    def p_forecasting():
+        return render_template("forecasting.html")
     return app

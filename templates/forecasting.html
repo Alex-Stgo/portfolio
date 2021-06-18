@@ -79,10 +79,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center section-project-title">
-          <h2>Swap equivalence calculator</h1>
+          <h2>Economic variable forecasting report</h1>
           <ol>
             <li><a href="/#portfolio">Home</a></li>
-            <li>Swap equivalence calculator</li>
+            <li>Economic variable forecasting report</li>
           </ol>
         </div>
 
@@ -102,14 +102,14 @@
                 <div class="swiper-slide">
                   <img src="/static/assets/img/portfolio/portfolio-details-1.jpg" alt="">
                 </div>
-
+<!-- 
                 <div class="swiper-slide">
                   <img src="/static/assets/img/portfolio/portfolio-details-2.jpg" alt="">
                 </div>
 
                 <div class="swiper-slide">
                   <img src="/static/assets/img/portfolio/portfolio-details-3.jpg" alt="">
-                </div>
+                </div> -->
 
               </div>
               <div class="swiper-pagination"></div>
@@ -120,16 +120,17 @@
             <div class="portfolio-info">
               <h3>Summary</h3>
               <ul>
-                <li><strong>Category</strong>: Finance | Python | Data analysis</li>
+                <li><strong>Category</strong>: Finance | Excel | Data analysis</li>
                 <li><i class="bx bxl-github"></i><a href="/#about">&#09; Github repository</a></li>
                 <li><i class="bx bxs-file"></i><a href="/#about">&#09; File to download</a></li>
                 <!-- <li><strong>Client</strong>: ASU Company</li>
                 <li><strong>Project date</strong>: 01 March, 2020</li>
                 <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li> -->
               </ul>
-              <p>A swap is a derivative contract through which two parties exchange the cash flows or liabilities from two different financial instruments. 
-                One cash flow is generally fixed, while the other is variable and based on a benchmark interest rate. <br>
-                Given the features of one leg, the purpose of the current calculator is to determine <strong> the rate for the second leg </strong>according to its own characteristics.
+              <p class="p-justified">
+                <strong>The Economic Forecast Report </strong> is usually used as a guide to determine the strategy, budgets and plans for upcoming years.
+                Government officials and business managers use economic forecasts to determine financial and operative policies according to the future cashflows. <br>
+                The current report was built to automatically connect with <strong>The Central Bank' economists expectations </strong>  to disaggreagate the information to a month-to-month overview.
               </p>
             </div>
             <!-- <div class="portfolio-description">
@@ -150,7 +151,70 @@
 
         <div class="section-title">
           <h2>Details</h2>
-          <p>This is an additional detail</p>
+          <h4>Scope</h4>
+          <p class="p-justified">
+            The report was intented to consume information from the <strong>Central Bank Portal</strong>: <a href="https://www.banxico.org.mx/" target="_blank"> www.banxico.org.mx</a>,
+             process it and present it in a relevant structure to allow the <strong>balance sheet</strong> and  <strong>income statement</strong> to be estimated for the following year. <br> 
+             <em>Banxico</em> is considered as a reliable benchmark for the mexican market expectations. Banxico usually releases this information every end of month,
+             collecting estimations from around 40 economists and providing the statistics related to their opinions. <br>
+             The most important estimation from Banxico, related to the current report, is the <em>daily bank funding rate</em>. 
+             As a prior analysis, the correlation between the daily bank funding rate and other mexican rates (such as <em>the interbank equilibrium interest rate</em> and <em>the treasury certificates interest rate</em>)
+             was analyzed. The correlation for the rates to be estimated was above 0.95.
+          </p>
+          <div  class="img-body-port">
+            <img src="/static/assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid img-b-portfolio" alt="">
+          </div>
+        </div>
+        <h4>Implementation</h4>
+          <p class="p-justified">
+            Given the previous results, the task consists basically in extract historical information to calculate the coeficients related to the regression to
+            obtain the forecasted values for the rates in the scope.
+            The report was built in a Excel worksheet using the <strong>Power Query</strong> functionality. It is important to highlight that <strong>Power Query</strong> and <strong>Power BI</strong> 
+            rely on M code to program the data transformations. <br>
+          </p>
+          <p>
+            Banxico has built and exposed its own API service to be consumed for the final users. The details about the API could be found <a href="https://www.banxico.org.mx/SieAPIRest/service/v1/"> here</a>. <br>
+            The request construction is as follows: <br>
+          </p>
+          <p class="p-centered">
+            <em>https://www.banxico.org.mx/SieAPIRest/service/v1/series/<strong>:SerieID</strong>/datos/<strong>:StartDate</strong>/<strong>:EndDate</strong></em> 
+          </p>
+          <p>
+            As well, the headers must be declared:
+          </p>
+          <p class="p-centered">
+            <em> <strong>Bmx-Token</strong>: e3980208bf01ec653aba9aee3c2d6f70f6ae8b066d2545e379b9e0ef92e9de25</em>
+          </p>
+          <p>
+            So, the M code to consume the historical information of the <em>daily bank funding rate</em> is as follows:
+          </p>
+          <div  class="img-carbon">
+            <img src="/static/assets/img/portfolio/Economic forecast/Code1.png" class="img-fluid img-carbon" alt="">
+          </div>
+          <p>
+            The result is a table with the entire serie related delimited for the starting and the end date specified in the URL. 
+            This process should be executed for each serie in scope, so it is a better solution to create a function tu be reused.
+          </p>
+          <p>
+            However, it is necessary a prior function that allows to retrieve parameters from a table in the workbook. In this way, parameters such as the BMX token
+            could be updated without updating de M code. As long as a table named <em>Parameters</em> exists with two columns: <em>Parameter</em> and <em>Value</em>, the code is the following:
+          </p>
+          <div  class="img-carbon">
+            <img src="/static/assets/img/portfolio/Economic forecast/Code3.png" class="img-fluid img-carbon" alt="">
+          </div>
+
+
+
+
+
+
+
+
+          <div  class="img-body-port">
+            <!-- <img src="/static/assets/img/portfolio/portfolio-details-1.jpg" alt=""> -->
+            
+          <!-- </div> -->
+          
         </div>
       </div>
     </section>
