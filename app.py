@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 import datetime as dt
+import numpy as np
 # from pymongo import MongoClient
 # from dotenv import load_dotenv
 import os
+import labyrinth as lb
 
 # load_dotenv()
 
@@ -29,4 +31,21 @@ def create_app():
     @app.route("/projects/forecasting_report/")
     def p_forecasting():
         return render_template("forecasting.html")
+    
+    @app.route("/projects/labyrinth_solver/",methods=["GET","POST"])
+    def p_labyrinth():
+        
+        if request.method=="POST":
+            letters = ['A','B','C','D','E','F','G','H','I','J','K','L']
+            labyrinth= lb.labyrinth(0.75,0.9)
+            x = int(request.form.get("start_field"))
+            y = int(request.form.get("end_field"))
+            text = " -> ".join(labyrinth.get_route(0,x,y))
+            start = letters[x]
+            end = letters[y]
+        else:
+            text=""
+            start=""
+            end=""
+        return render_template("Labyrinth.html", start=start,end=end,route=text)
     return app

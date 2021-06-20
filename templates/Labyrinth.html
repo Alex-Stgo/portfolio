@@ -79,10 +79,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center section-project-title">
-          <h2>Economic forecasting report</h1>
+          <h2>Labyrinth solver</h1>
           <ol>
             <li><a href="/#portfolio">Home</a></li>
-            <li>Economic forecasting report</li>
+            <li>Labyrinth solver</li>
           </ol>
         </div>
 
@@ -116,7 +116,7 @@
             <div class="portfolio-info">
               <h3>Summary</h3>
               <ul>
-                <li><strong>Category</strong>: Finance | Excel | Data analysis | Power Pivot</li>
+                <li><strong>Category</strong>: Machine Learning | Python </li>
                 <!-- <li><i class="bx bxl-github"></i><a href="/#about">&#09; Github repository</a></li> -->
                 <li><i class="bx bxs-file"></i><a href="/static/files/Economic Forecast Report V1.xlsm">&#09; File to download</a></li>
               </ul>
@@ -136,7 +136,6 @@
 
     <section id="testimonials" class="testimonials section-bg">
       <div class="container">
-
         <div class="section-title">
           <h2>Details</h2>
           <h4>Scope</h4>
@@ -148,31 +147,57 @@
             With this information, the report will estimate rates  such as <em>the interbank equilibrium interest rate</em> and <em>the treasury certificates interest rate</em>
             for the following year performing a five-year linear regression with the <em>daily bank funding rate</em> as a regressor.
           </p>
-        </div>
-        <h4>Implementation</h4>
-          <p class="p-justified">
-            The report has been built in a Excel worksheet using <strong>Power Query</strong> functionality. <br>
-            First, a M-code function is developed to retrieve historical information from Banxico with the serie ID and the token. The code is a it follows:
-          </p>
-          <div  class="img-carbon">
-            <img src="/static/assets/img/portfolio/Economic forecast/Code1.png" class="img-fluid img-carbon" alt="">
+          <div class="row aos-init aos-animate mf-port" data-aos="fade-in" id=calculator>
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch port-form">
+              <form action="/projects/labyrinth_solver/#calculator" method="POST">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="start_field">Start</label>
+                    <select name="start_field" id="start_field" class="form-control">
+                      <option value="0">A</option>
+                      <option value="1">B</option>
+                      <option value="2">C</option>
+                      <option value="3">D</option>
+                      <option value="4">E</option>
+                      <option value="5">F</option>
+                      <option value="6">G</option>
+                      <option value="7">H</option>
+                      <option value="8">I</option>
+                      <option value="9">J</option>
+                      <option value="10">K</option>
+                      <option value="11">L</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="end_field">End</label>
+                    <select name="end_field" id="end_field" class="form-control">
+                      <option value="0">A</option>
+                      <option value="1">B</option>
+                      <option value="2">C</option>
+                      <option value="3">D</option>
+                      <option value="4">E</option>
+                      <option value="5">F</option>
+                      <option value="6">G</option>
+                      <option value="7">H</option>
+                      <option value="8">I</option>
+                      <option value="9">J</option>
+                      <option value="10">K</option>
+                      <option value="11">L</option>
+                    </select>
+                  </div>
+                </div>
+               
+
+                <button type="submit">Calculate</button>
+              </form>
+            </div>
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch port-form">
+              <div class="section-title">
+                <p>The route to get from {{start}} to {{end}} is:</p> <br>
+                <p>{{route}}</p>
+              </div>
+            </div>
           </div>
-          <p>
-            Rates in scope are estimated through a lineal regression based on the <em>daily bank funding rate</em>. The code for linear regression is the following:
-          </p>
-          <div  class="img-carbon">
-            <img src="/static/assets/img/portfolio/Economic forecast/Code2.PNG" class="img-fluid img-carbon" alt="">
-          </div>
-          <p>
-            The final result is the estimation of <em>the interbank equilibrium interest rate</em> for 28, 91 and 182 days.
-          </p>
-          <div >
-            <img src="/static/assets/img/portfolio/Economic forecast/Code3.png" class="img-fluid img-carbon" alt="">
-          </div>
-          <p>
-            The report is automatically updated when you click <strong> <em>Data > Refresh All</em></strong>.
-          </p>
-          <div  class="img-body-port">
         </div>
       </div>
     </section>

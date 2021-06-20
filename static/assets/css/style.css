@@ -880,7 +880,7 @@ section {
   padding-left: 60px;
 }
 
-.contact .info .social-links a {
+.contact .info .social-links .port-forms a {
   font-size: 18px;
   display: inline-block;
   background: #333;
@@ -895,7 +895,7 @@ section {
   margin-right: 10px;
 }
 
-.contact .info .social-links a:hover {
+.contact .info .social-links .port-forms a:hover {
   background: #149ddd;
   color: #fff;
 }
@@ -1216,3 +1216,110 @@ section {
 .p-justified {
   text-align: justify;
 }
+
+/* Sección de Formularios */
+
+.mf-port {
+  padding-bottom: 130px;
+  padding-top: 50px;
+}
+
+.mf-port .port-form {
+  width: 48%;
+  padding: 30px;
+  margin: 1%;
+  background: #fff;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  
+}
+
+/* .contact .php-email-form .form-group {
+  padding-bottom: 8px;
+} */
+
+.mf-port .port-form .validate {
+  display: none;
+  color: red;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.mf-port .port-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.mf-port .port-form .error-message br + br {
+  margin-top: 25px;
+}
+
+.mf-port .port-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.mf-port .port-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.mf-port .port-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+
+.mf-port .port-form .form-group {
+  margin-bottom: 15px;
+}
+
+.mf-port .port-form label {
+  padding-bottom: 8px;
+}
+
+.mf-port .port-form input, .mf-port .port-form textarea  {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.mf-port .port-form input {
+  height: 44px;
+}
+
+.mf-port .port-form textarea {
+  padding: 10px 15px;
+}
+
+.mf-port .port-form button[type="submit"] {
+  background: #149ddd;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.mf-port .port-form button[type="submit"]:hover {
+  background: #37b3ed;
+}
+
+/* Termina sección de formularios */
