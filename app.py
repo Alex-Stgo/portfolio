@@ -53,6 +53,14 @@ def create_app():
     def p_endofmonth():
         return render_template("endofmonth.html")
     
+    @app.route("/projects/web_map/")
+    def p_webmap():
+        return render_template("webmap.html")
+
+    @app.route("/projects/map/")
+    def p_map():
+        return render_template("map1.html")
+    
     @app.route("/projects/labyrinth_solver/",methods=["GET","POST"])
     def p_labyrinth():
         
