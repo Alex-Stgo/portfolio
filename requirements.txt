@@ -5,3 +5,4 @@ numpy
 datetime
 python-dateutil
 pandas
+xlrd

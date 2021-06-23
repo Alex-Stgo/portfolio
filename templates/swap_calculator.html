@@ -136,7 +136,7 @@
           <h2>Details</h2>
           <!-- <h4>Scope</h4> -->
           <p class="p-justified">
-            The calculator covers the calculation of the spread over the variable leg given a fixed rate and the periods for each leg with a $1,000,000 MXN.
+            <!-- The calculator covers the calculation of the spread over the variable leg given a fixed rate and the periods for each leg with a $1,000,000 MXN. -->
             The variable leg considers periods of 28 days while the fixed leg considers periods of one calendar month. 
             <br>
             In the GitHub repository, you can check out the code for the calculation for more types of swaps, including a cross-currency swap.
@@ -145,35 +145,23 @@
           <div class="row aos-init aos-animate mf-port" data-aos="fade-in" id=calculator>
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch port-form-75">
-              <form action="/projects/labyrinth_solver/#calculator" method="POST" class="form-tag">
+              <form action="/projects/swap_calculator/#calculator" method="POST" class="form-tag">
                 <div class="subdiv2">
                   <h4>Variable Leg</h4>
-                  <!-- <label for="start_field" class="port-label">Type</label> -->
-                  <!-- <select name="start_field" id="start_field" class="form-control w80" >
-                    <option value=0 >Fixed MXN</option>
-                    <option value=1 >variable MXN</option>
-                  </select> -->
-                  <label for="notional">Notional</label>
-                  <input type="number" name="notional" id="notional"  class="form-control w80">
-                  <label for="periods">Number of periods</label>
-                  <input type="number" name="periods" id="periods"  class="form-control w80">
-                  <label for="rate">Rate</label><p class="footnotes"> <em> (In percentage) </em> </p>
-                  <input type="number" name="rate" id="rate"  class="form-control w80">
+                  <label for="notional1">Notional</label>
+                  <input required type="number" name="notional1" id="notional1"  class="form-control w80" {% if data['calculated'] %} value={{data['notional1']}} {% else %} value=1000 {% endif %}>
+                  <label for="periods1">Number of periods</label>
+                  <input required type="number" name="periods1" id="periods1"  class="form-control w80" {% if data['calculated'] %} value={{data['periods1']}} {% else %} value=13 {% endif %}>
                 </div>
 
                 <div class="subdiv2">
                   <h4>Fixed Leg</h4>
-                  <!-- <label for="start_field" class="port-label">Type</label> -->
-                  <!-- <select name="start_field" id="start_field" class="form-control w80" >
-                    <option value=0 >Fixed MXN</option>
-                    <option value=1 >variable MXN</option>
-                  </select> -->
-                  <label for="notional">Notional</label>
-                  <input type="number" name="notional" id="notional"  class="form-control w80">
-                  <label for="periods">Number of periods</label>
-                  <input type="number" name="periods" id="periods"  class="form-control w80">
-                  <!-- <label for="rate">Rate</label><p class="footnotes"> <em> (In percentage) </em> </p>
-                  <input type="number" name="rate" id="rate"  class="form-control w80"> -->
+                  <label for="notional2">Notional</label>
+                  <input required type="number" name="notional2" id="notional2"  class="form-control w80" {% if data['calculated'] %} value={{data['notional2']}} {% else %} value=1000 {% endif %}>
+                  <label for="periods2">Number of periods</label>
+                  <input required type="number" name="periods2" id="periods2"  class="form-control w80" {% if data['calculated'] %} value={{data['periods2']}} {% else %} value=12 {% endif %}>
+                  <label for="rate2">Rate</label><p class="footnotes"> <em> (In percentage) </em> </p>
+                  <input required type="number" step="0.01" name="rate2" id="rate2"  class="form-control w80" {% if data['calculated'] %} value={{data['rate2']}} {% else %} value=4 {% endif %}>
                 </div>
                 <button type="submit" class="port-button">Calculate</button>
               </form>
@@ -182,6 +170,7 @@
 
 
             <!-- Resultados -->
+            {% if data.calculated %}
             <div class="port-form-full">
               <div class="subdiv2">
                 <h4>Flows for the variable leg</h4>
@@ -189,29 +178,59 @@
                 <div class="table-concept">
                   <table style="width:100%">
                     <tr>
-                      <th>Firstname</th>
-                      <th>Lastname</th>
-                      <th>Age</th>
-                      <th>Age</th>
+                      <th></th>
+                      <th>Start date</th>
+                      <th>End date</th>
+                      <th>Rate</th>
+                      <th>Interest</th>
+                      <th>Total in PV</th>
+
                     </tr>
+                    {% for (_,start,end,notional,rate,rate_spr,int,df,amor,cf,cf_pv) in data['l1'].itertuples() %}
                     <tr>
-                      <td>Jill</td>
-                      <td>Smith</td>
-                      <td>50</td>
-                      <td>50</td>
+                      <td>{{loop.index0+1}}</td>
+                      <td>{{ start }}</td>
+                      <td>{{ end }}</td>
+                      <td>{{ "{:.2%}".format(rate_spr) }}</td>
+                      <td>{{ "${:,.2f}". format(int) }}</td>
+                      <td>{{ "${:,.2f}". format(cf_pv) }}</td>
                     </tr>
+                    {% endfor %}
                   </table>
                 </div>
               </div>
               <div class="subdiv2">
                 <h4>Flows for the fixed leg</h4>
+                <br>
+                <div class="table-concept">
+                  <table style="width:100%">
+                    <tr>
+                      <th></th>
+                      <th>Start date</th>
+                      <th>End date</th>
+                      <th>Rate</th>
+                      <th>Interest</th>
+                      <th>Total in PV</th>
+
+                    </tr>
+                    {% for (_,start,end,notional,rate,rate_spr,int,df,amor,cf,cf_pv) in data['l2'].itertuples() %}
+                    <tr>
+                      <td>{{loop.index0+1}}</td>
+                      <td>{{ start }}</td>
+                      <td>{{ end }}</td>
+                      <td>{{ "{:.2%}".format(rate_spr) }}</td>
+                      <td>{{ "${:,.2f}". format(int) }}</td>
+                      <td>{{ "${:,.2f}". format(cf_pv) }}</td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                </div>
               </div>
               <div class="w100">
-                <p>The spread required for the variable leg to equal the fixed leg is 141 pb</p>
+                <p>The spread required for the variable leg to equal the fixed leg present value is <strong> {{  data['spread']  }} </strong> pb</p>
               </div>
-              
-
             </div>
+            {% endif %}
             
 
 

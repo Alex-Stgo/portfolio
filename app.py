@@ -5,6 +5,7 @@ import numpy as np
 # from dotenv import load_dotenv
 import os
 import labyrinth as lb
+import swaps as sw
 
 # load_dotenv()
 
@@ -24,9 +25,25 @@ def create_app():
         # entries=[(entry["content"],entry["date"]) for entry in app.db.entries.find({})]
         return render_template("index.html")
 
-    @app.route("/projects/swap_calculator/")
+    @app.route("/projects/swap_calculator/",methods=["GET","POST"])
     def p_swap():
-        return render_template("swap_calculator.html")
+        data={}
+        if request.method == "POST":
+            data['notional1'] = int(request.form.get("notional1"))
+            data['periods1'] = int(request.form.get("periods1"))
+            data['notional2'] = int(request.form.get("notional2"))
+            data['periods2'] = int(request.form.get("periods2"))
+            data['rate2'] = float(request.form.get("rate2"))
+            leg1 = sw.leg.VariableMXN(data['notional1'],data['periods1'])
+            leg2 = sw.leg.FixedMXN(data['notional2'],data['periods2'],data['rate2']/100)
+            swap = sw.swap(leg1,leg2)
+            data['calculated'] = True
+            data['l1']=leg1.flows
+            data['l2']=leg2.flows
+            data['spread']=round(swap.spread()*10000,2)
+        else:
+            data['calculated'] = False
+        return render_template("swap_calculator.html",data=data)
 
     @app.route("/projects/forecasting_report/")
     def p_forecasting():

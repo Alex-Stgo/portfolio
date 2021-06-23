@@ -156,7 +156,7 @@
                 <div class="row">
                   <div class="form-group">
                     <label for="start_field">Starting point</label>
-                    <select name="start_field" id="start_field" class="form-control" >
+                    <select required name="start_field" id="start_field" class="form-control" >
                       <option value="0" {% if sn ==0 %} selected="selected"{% endif %}>A</option>
                       <option value="1" {% if sn ==1 %} selected="selected"{% endif %}>B</option>
                       <option value="2" {% if sn ==2 %} selected="selected"{% endif %}>C</option>
@@ -173,7 +173,7 @@
                   </div>
                   <div class="form-group">
                     <label for="end_field">Ending point</label>
-                    <select name="end_field" id="end_field" class="form-control">
+                    <select required name="end_field" id="end_field" class="form-control">
                       <option value="0" {% if dn ==0 %} selected="selected"{% endif %}>A</option>
                       <option value="1" {% if dn ==1 %} selected="selected"{% endif %}>B</option>
                       <option value="2" {% if dn ==2 %} selected="selected"{% endif %}>C</option>
@@ -197,7 +197,7 @@
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch port-form">
               <div class="section-title">
                 {% if result %}
-                  <p>The route to get from {{start}} to {{end}} is:</p> <br>
+                  <p>The route to get from <strong>{{start}}</strong> to <strong> {{end}} </strong> is:</p> <br>
                   <p> <strong>  {{route}}</strong></p>
                 {% else %}
                     <p> <em> -- Select some values in the left pane to start -- </em> </p>

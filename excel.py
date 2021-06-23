@@ -1,4 +1,5 @@
 import pandas as pd
+import xlrd
 
 class excel():
     def __init__(self,data):

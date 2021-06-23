@@ -108,7 +108,8 @@ class swap():
         self.leg2 = leg2
     def spread(self):
         return (self.leg1.pv() - self.leg2.pv()) / self.leg2.daystimesDF()
-leg1=leg.VariableMXN(1000,13)
-leg2=leg.FixedMXN(1000,12,0.04)
-swap=swap(leg1,leg2)
-print()
+
+# leg1 = leg.VariableMXN(1000,13)
+# leg2 = leg.FixedMXN(1000,12,0.04)
+# swap = swap(leg1,leg2)
+# print()
