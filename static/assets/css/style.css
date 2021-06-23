@@ -1262,6 +1262,18 @@ section {
   
 }
 
+@media (max-width: 768px) {
+  .mf-port .port-form-75 {
+    width: 90%;
+    padding: 30px;
+    margin: auto;
+    margin-bottom: 30px;
+    background: #fff;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+    
+  }
+}
+
 .mf-port .port-form-50 {
   width: 45%;
   padding: 30px;
@@ -1388,6 +1400,23 @@ section {
   border-color: black; */
   width: 47.5%;
   vertical-align: top;
+}
+
+.subdiv2 h4 {
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .subdiv2 {
+    padding: 0%;
+    margin: 1%;
+    margin-top: 30px;
+    box-sizing: border-box;
+    display: inline-block;
+
+    width: 100%;
+    vertical-align: top;
+  }
 }
 
 .subdiv3 {
