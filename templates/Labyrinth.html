@@ -55,7 +55,7 @@
           <a href="https://github.com/Alex-Stgo" target="_blank" class="Github"><i class="bx bxl-github"></i></a>
           <a href="https://www.udemy.com/user/omar-alejandro-santiago-santaella/" target="_blank" class="Udemy"><i class="iconify" data-icon="cib:udemy" data-inline="true"></i></a>
           <a href="https://www.coursera.org/user/c17d3e085bd9e704c15fc0130946d0a3" target="_blank" class="Coursera"><i class="iconify" data-icon="cib:coursera" data-inline="true"></i></a>
-          <a href="https://www.kaggle.com/alexssk" target="_blank" class="Kaggle"><i class="iconify" data-icon="simple-icons:kaggle" data-inline="true"></i></a>
+          <a href="https://www.kaggle.com/alexssk" target="_blank" class="Kaggle"><i class="iconify" data-icon="cib:kaggle" data-inline="true"></i></a>
         </div>
       </div>
 
@@ -100,7 +100,11 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="/static/assets/img/portfolio/Economic forecast/Header2.jpg" alt="">
+                  <img src="/static/assets/img/portfolio/Labyrinth/p1.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="/static/assets/img/portfolio/Labyrinth/lab1.JPG" alt="">
                 </div>
 
                 <!-- <div class="swiper-slide">
@@ -117,13 +121,14 @@
               <h3>Summary</h3>
               <ul>
                 <li><strong>Category</strong>: Machine Learning | Python </li>
-                <!-- <li><i class="bx bxl-github"></i><a href="/#about">&#09; Github repository</a></li> -->
-                <li><i class="bx bxs-file"></i><a href="/static/files/Economic Forecast Report V1.xlsm">&#09; File to download</a></li>
+                <li><i class="bx bxl-github"></i><a href="/#about">&#09; Github repository</a></li>
+                <!-- <li><i class="bx bxs-file"></i><a href="/static/files/Economic Forecast Report V1.xlsm">&#09; File to download</a></li> -->
               </ul>
               <p class="p-justified">
-                <strong>The Economic Forecast Report </strong> is usually used as a guide to determine the strategy, budgets and plans for upcoming years.
-                Government officials and business managers use economic forecasts to determine financial and operative policies according to the future cashflows. <br>
-                The current report was built to automatically connect with <strong>The Mexican Central Bank's economists expectations </strong>  to generate a month-to-month report.
+                A <strong> Markov decision process </strong> (MDP) is a discrete-time stochastic control process. It provides a mathematical framework for modeling decision making in situations 
+                where outcomes are partly random and partly under the control of a decision maker. MDPs are useful for studying optimization problems solved via dynamic programming.
+                In this exercise, we will use the temporal difference with the Bellman equation to obtain the optimal route in a labyrinth to get from the starting to the ending point. <br>
+                <em>To maximize the Q-function we will use the argmax function.</em>
               </p>
             </div>
           </div>
@@ -138,14 +143,9 @@
       <div class="container">
         <div class="section-title">
           <h2>Details</h2>
-          <h4>Scope</h4>
+          <!-- <h4>Scope</h4> -->
           <p class="p-justified">
-            Many companies usually require to perform forecastings every quarter to adjust cashflows expectations. This report consumes information
-            directly from the API exposed by the <a href="https://www.banxico.org.mx/SieAPIRest/service/v1/" target="_blank"> Economic Information System</a> 
-            of <a href="https://www.banxico.org.mx/" target="_blank">Banxico.</a>
-            It provides historical financial and economic information and perspectives for the following months which are going to be consumed to achieve the main goal.
-            With this information, the report will estimate rates  such as <em>the interbank equilibrium interest rate</em> and <em>the treasury certificates interest rate</em>
-            for the following year performing a five-year linear regression with the <em>daily bank funding rate</em> as a regressor.
+            The main goal is to build an AI that will always take the shortest route to the top priority location, whatever the location it starts from.
           </p>
           <div class="row aos-init aos-animate mf-port" data-aos="fade-in" id=calculator>
             <div >
@@ -154,38 +154,38 @@
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch port-form">
               <form action="/projects/labyrinth_solver/#calculator" method="POST">
                 <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="start_field">Start</label>
-                    <select name="start_field" id="start_field" class="form-control">
-                      <option value="0">A</option>
-                      <option value="1">B</option>
-                      <option value="2">C</option>
-                      <option value="3">D</option>
-                      <option value="4">E</option>
-                      <option value="5">F</option>
-                      <option value="6">G</option>
-                      <option value="7">H</option>
-                      <option value="8">I</option>
-                      <option value="9">J</option>
-                      <option value="10">K</option>
-                      <option value="11">L</option>
+                  <div class="form-group">
+                    <label for="start_field">Starting point</label>
+                    <select name="start_field" id="start_field" class="form-control" >
+                      <option value="0" {% if sn ==0 %} selected="selected"{% endif %}>A</option>
+                      <option value="1" {% if sn ==1 %} selected="selected"{% endif %}>B</option>
+                      <option value="2" {% if sn ==2 %} selected="selected"{% endif %}>C</option>
+                      <option value="3" {% if sn ==3 %} selected="selected"{% endif %}>D</option>
+                      <option value="4" {% if sn ==4 %} selected="selected"{% endif %}>E</option>
+                      <option value="5" {% if sn ==5 %} selected="selected"{% endif %}>F</option>
+                      <option value="6" {% if sn ==6 %} selected="selected"{% endif %}>G</option>
+                      <option value="7" {% if sn ==7 %} selected="selected"{% endif %}>H</option>
+                      <option value="8" {% if sn ==8 %} selected="selected"{% endif %}>I</option>
+                      <option value="9" {% if sn ==9 %} selected="selected"{% endif %}>J</option>
+                      <option value="10" {% if sn ==10 %} selected="selected"{% endif %}>K</option>
+                      <option value="11" {% if sn ==11 %} selected="selected"{% endif %}>L</option>
                     </select>
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="end_field">End</label>
+                  <div class="form-group">
+                    <label for="end_field">Ending point</label>
                     <select name="end_field" id="end_field" class="form-control">
-                      <option value="0">A</option>
-                      <option value="1">B</option>
-                      <option value="2">C</option>
-                      <option value="3">D</option>
-                      <option value="4">E</option>
-                      <option value="5">F</option>
-                      <option value="6">G</option>
-                      <option value="7">H</option>
-                      <option value="8">I</option>
-                      <option value="9">J</option>
-                      <option value="10">K</option>
-                      <option value="11">L</option>
+                      <option value="0" {% if dn ==0 %} selected="selected"{% endif %}>A</option>
+                      <option value="1" {% if dn ==1 %} selected="selected"{% endif %}>B</option>
+                      <option value="2" {% if dn ==2 %} selected="selected"{% endif %}>C</option>
+                      <option value="3" {% if dn ==3 %} selected="selected"{% endif %}>D</option>
+                      <option value="4" {% if dn ==4 %} selected="selected"{% endif %}>E</option>
+                      <option value="5" {% if dn ==5 %} selected="selected"{% endif %}>F</option>
+                      <option value="6" {% if dn ==6 %} selected="selected"{% endif %}>G</option>
+                      <option value="7" {% if dn ==7 %} selected="selected"{% endif %}>H</option>
+                      <option value="8" {% if dn ==8 %} selected="selected"{% endif %}>I</option>
+                      <option value="9" {% if dn ==9 %} selected="selected"{% endif %}>J</option>
+                      <option value="10" {% if dn ==10 %} selected="selected"{% endif %}>K</option>
+                      <option value="11" {% if dn ==11 %} selected="selected"{% endif %}>L</option>
                     </select>
                   </div>
                 </div>
@@ -196,8 +196,12 @@
             </div>
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch port-form">
               <div class="section-title">
-                <p>The route to get from {{start}} to {{end}} is:</p> <br>
-                <p> <strong>  {{route}}</strong></p>
+                {% if result %}
+                  <p>The route to get from {{start}} to {{end}} is:</p> <br>
+                  <p> <strong>  {{route}}</strong></p>
+                {% else %}
+                    <p> <em> -- Select some values in the left pane to start -- </em> </p>
+                {% endif %}
               </div>
             </div>
           </div>

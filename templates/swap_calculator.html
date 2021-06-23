@@ -55,7 +55,7 @@
           <a href="https://github.com/Alex-Stgo" target="_blank" class="Github"><i class="bx bxl-github"></i></a>
           <a href="https://www.udemy.com/user/omar-alejandro-santiago-santaella/" target="_blank" class="Udemy"><i class="iconify" data-icon="cib:udemy" data-inline="true"></i></a>
           <a href="https://www.coursera.org/user/c17d3e085bd9e704c15fc0130946d0a3" target="_blank" class="Coursera"><i class="iconify" data-icon="cib:coursera" data-inline="true"></i></a>
-          <a href="https://www.kaggle.com/alexssk" target="_blank" class="Kaggle"><i class="iconify" data-icon="simple-icons:kaggle" data-inline="true"></i></a>
+          <a href="https://www.kaggle.com/alexssk" target="_blank" class="Kaggle"><i class="iconify" data-icon="cib:kaggle" data-inline="true"></i></a>
         </div>
       </div>
 
@@ -79,10 +79,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center section-project-title">
-          <h2>Swap equivalence calculator</h1>
+          <h2>Swap spread calculator</h1>
           <ol>
             <li><a href="/#portfolio">Home</a></li>
-            <li>Swap equivalence calculator</li>
+            <li>Swap spread calculator</li>
           </ol>
         </div>
 
@@ -100,15 +100,7 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="/static/assets/img/portfolio/portfolio-details-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="/static/assets/img/portfolio/portfolio-details-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="/static/assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                  <img src="/static/assets/img/portfolio/Swap calculator/p1.jpg" alt="">
                 </div>
 
               </div>
@@ -120,37 +112,111 @@
             <div class="portfolio-info">
               <h3>Summary</h3>
               <ul>
-                <li><strong>Category</strong>: Finance | Python | Data analysis</li>
+                <li><strong>Category</strong>: Finance | Python | Mathematical models </li>
                 <li><i class="bx bxl-github"></i><a href="/#about">&#09; Github repository</a></li>
-                <li><i class="bx bxs-file"></i><a href="/#about">&#09; File to download</a></li>
-                <!-- <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li> -->
+                <!-- <li><i class="bx bxs-file"></i><a href="/static/files/Economic Forecast Report V1.xlsm">&#09; File to download</a></li> -->
               </ul>
-              <p>A swap is a derivative contract through which two parties exchange the cash flows or liabilities from two different financial instruments. 
-                One cash flow is generally fixed, while the other is variable and based on a benchmark interest rate. <br>
-                Given the features of one leg, the purpose of the current calculator is to determine <strong> the rate for the second leg </strong>according to its own characteristics.
+              <p class="p-justified">
+                A swap is a derivative contract through which two parties exchange the cash flows or liabilities from two different financial instruments. 
+                One cash flow is generally fixed, while the other is variable and based on a benchmark interest rate.
+                Given the features of the legs, the purpose of the current calculator is to determine the <strong> spread for the first leg </strong> to equal both present values.
               </p>
             </div>
-            <!-- <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-            </div> -->
           </div>
 
         </div>
 
       </div>
-    </section><!-- End Portfolio Details Section -->
+    </section>
+    <!-- End Portfolio Details Section -->
 
     <section id="testimonials" class="testimonials section-bg">
       <div class="container">
-
         <div class="section-title">
           <h2>Details</h2>
-          <p>This is an additional detail</p>
+          <!-- <h4>Scope</h4> -->
+          <p class="p-justified">
+            The calculator covers the calculation of the spread over the variable leg given a fixed rate and the periods for each leg with a $1,000,000 MXN.
+            The variable leg considers periods of 28 days while the fixed leg considers periods of one calendar month. 
+            <br>
+            In the GitHub repository, you can check out the code for the calculation for more types of swaps, including a cross-currency swap.
+
+          </p>
+          <div class="row aos-init aos-animate mf-port" data-aos="fade-in" id=calculator>
+
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch port-form-75">
+              <form action="/projects/labyrinth_solver/#calculator" method="POST" class="form-tag">
+                <div class="subdiv2">
+                  <h4>Variable Leg</h4>
+                  <!-- <label for="start_field" class="port-label">Type</label> -->
+                  <!-- <select name="start_field" id="start_field" class="form-control w80" >
+                    <option value=0 >Fixed MXN</option>
+                    <option value=1 >variable MXN</option>
+                  </select> -->
+                  <label for="notional">Notional</label>
+                  <input type="number" name="notional" id="notional"  class="form-control w80">
+                  <label for="periods">Number of periods</label>
+                  <input type="number" name="periods" id="periods"  class="form-control w80">
+                  <label for="rate">Rate</label><p class="footnotes"> <em> (In percentage) </em> </p>
+                  <input type="number" name="rate" id="rate"  class="form-control w80">
+                </div>
+
+                <div class="subdiv2">
+                  <h4>Fixed Leg</h4>
+                  <!-- <label for="start_field" class="port-label">Type</label> -->
+                  <!-- <select name="start_field" id="start_field" class="form-control w80" >
+                    <option value=0 >Fixed MXN</option>
+                    <option value=1 >variable MXN</option>
+                  </select> -->
+                  <label for="notional">Notional</label>
+                  <input type="number" name="notional" id="notional"  class="form-control w80">
+                  <label for="periods">Number of periods</label>
+                  <input type="number" name="periods" id="periods"  class="form-control w80">
+                  <!-- <label for="rate">Rate</label><p class="footnotes"> <em> (In percentage) </em> </p>
+                  <input type="number" name="rate" id="rate"  class="form-control w80"> -->
+                </div>
+                <button type="submit" class="port-button">Calculate</button>
+              </form>
+            </div>
+
+
+
+            <!-- Resultados -->
+            <div class="port-form-full">
+              <div class="subdiv2">
+                <h4>Flows for the variable leg</h4>
+                <br>
+                <div class="table-concept">
+                  <table style="width:100%">
+                    <tr>
+                      <th>Firstname</th>
+                      <th>Lastname</th>
+                      <th>Age</th>
+                      <th>Age</th>
+                    </tr>
+                    <tr>
+                      <td>Jill</td>
+                      <td>Smith</td>
+                      <td>50</td>
+                      <td>50</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="subdiv2">
+                <h4>Flows for the fixed leg</h4>
+              </div>
+              <div class="w100">
+                <p>The spread required for the variable leg to equal the fixed leg is 141 pb</p>
+              </div>
+              
+
+            </div>
+            
+
+
+
+          </div>
         </div>
       </div>
     </section>

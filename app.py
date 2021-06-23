@@ -31,6 +31,10 @@ def create_app():
     @app.route("/projects/forecasting_report/")
     def p_forecasting():
         return render_template("forecasting.html")
+
+    @app.route("/projects/end_of_month/")
+    def p_endofmonth():
+        return render_template("endofmonth.html")
     
     @app.route("/projects/labyrinth_solver/",methods=["GET","POST"])
     def p_labyrinth():
@@ -40,12 +44,18 @@ def create_app():
             labyrinth= lb.labyrinth(0.75,0.9)
             x = int(request.form.get("start_field"))
             y = int(request.form.get("end_field"))
+            result=True
             text = " -> ".join(labyrinth.get_route(0,x,y))
             start = letters[x]
             end = letters[y]
+            sn=x
+            dn=y
         else:
             text=""
             start=""
             end=""
-        return render_template("Labyrinth.html", start=start,end=end,route=text)
+            result=False
+            sn=0
+            dn=0
+        return render_template("Labyrinth.html", start=start,end=end,route=text,result=result,sn=sn,dn=dn)
     return app

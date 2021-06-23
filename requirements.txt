@@ -2,3 +2,6 @@ flask
 gunicorn
 python-dotenv
 numpy
+datetime
+python-dateutil
+pandas
