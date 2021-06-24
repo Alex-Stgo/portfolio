@@ -24,7 +24,7 @@ def create_app():
             data['rate2'] = float(request.form.get("rate2"))
             leg1 = sw.leg.VariableMXN(data['notional1'],data['periods1'])
             leg2 = sw.leg.FixedMXN(data['notional2'],data['periods2'],data['rate2']/100)
-            swap = sw.swap(leg2,leg1)
+            swap = sw.swap(leg1,leg2)
             data['calculated'] = True
             data['l1']=leg1.flows
             data['l2']=leg2.flows

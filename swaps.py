@@ -107,4 +107,4 @@ class swap():
         self.leg1 = leg1
         self.leg2 = leg2
     def spread(self):
-        return (self.leg1.pv() - self.leg2.pv()) / self.leg2.daystimesDF()
+        return (self.leg2.pv() - self.leg1.pv()) / self.leg1.daystimesDF()
