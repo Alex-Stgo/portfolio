@@ -6,3 +6,5 @@ datetime
 python-dateutil
 pandas
 xlrd
+requests
+beautifulsoup4

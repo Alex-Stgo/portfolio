@@ -4,7 +4,8 @@ import numpy as np
 import os
 import labyrinth as lb
 import swaps as sw
-
+from difflib import get_close_matches as gcm,SequenceMatcher as sm
+import book_store
 # load_dotenv()
 
 def create_app():
@@ -71,4 +72,37 @@ def create_app():
             sn=0
             dn=0
         return render_template("Labyrinth.html", start=start,end=end,route=text,result=result,sn=sn,dn=dn)
+    
+    @app.route("/projects/book-scrape/",methods=["GET","POST"])
+    def p_book_page():
+        data={}
+        if request.method=="POST":
+            if request.form.get("title") == None:
+                bsi = book_store.webscrap()
+                data["c1"]=True
+                data['categories'] = bsi.categories
+            else:
+                data["c1"]=True
+                data["c2"]=True
+                data['category'] = request.form.get("category")
+                print(data['category'])
+                data['title'] = request.form.get("title")
+                data['numres'] = int(request.form.get("numres"))
+                data['cutoff'] = float(request.form.get("cutoff"))
+
+                bsi = book_store.webscrap()
+                data['categories'] = bsi.categories
+                all_books = bsi.books_by_cat(data['category'])
+                books = gcm(data['title'],all_books,n=data['numres'],cutoff=data['cutoff'])
+                selected={k:v for k,v in all_books.items() if k in books}
+                data['results'] = {}
+                for book in selected.keys():
+                    data['results'][book] = bsi.book_info(book)
+                    data['results'][book]['Score'] = "{:.2%}".format(sm(None, data['title'],book).ratio())
+        else:
+            data['c1'] = False
+            data['c2'] = False
+        return render_template("books_scrap.html",data=data)
+    
+
     return app
